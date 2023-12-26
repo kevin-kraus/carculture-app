@@ -1,4 +1,5 @@
 import 'package:app/components/login/LoginWithAppleButton.dart';
+import 'package:app/components/login/LoginWithFacebookButton.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -40,33 +41,41 @@ class LoginScreen extends StatelessWidget {
         fontFamily: "Roboto",
         fontWeight: FontWeight.w300);
 
-    return Stack(children: <Widget>[
-      mainVisual,
-      SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Container(
-            decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
-          )),
-      SafeArea(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "👋🏻\nHerzlich willkommen bei CarCulture!",
-            style: titleStyle,
-            textAlign: TextAlign.center,
-          ),
-          Text("Bitte wähle eine Methode zur Anmeldung aus",
-              style: bodyStyle, textAlign: TextAlign.center),
-          Padding(
-            padding: EdgeInsets.only(top: 12, left: 13, right: 13),
-            child: LoginWithAppleButton(
-              width: 380,
+    return PopScope(
+      canPop: false,
+      child: Stack(children: <Widget>[
+        mainVisual,
+        SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
+            )),
+        const SafeArea(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "👋🏻\nHerzlich willkommen bei CarCulture!",
+              style: titleStyle,
+              textAlign: TextAlign.center,
             ),
-          ),
-        ],
-      )),
-    ]);
+            Text("Bitte wähle eine Methode zur Anmeldung aus",
+                style: bodyStyle, textAlign: TextAlign.center),
+            Padding(
+                padding: EdgeInsets.only(top: 0, left: 13, right: 13),
+                child: LoginWithAppleButton(
+                  width: 380,
+                )),
+            Padding(
+              padding: EdgeInsets.only(top: 0, left: 13, right: 13),
+              child: LoginWithFacebookButton(
+                width: 380,
+              ),
+            ),
+          ],
+        )),
+      ]),
+    );
   }
 }
