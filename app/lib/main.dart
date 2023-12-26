@@ -1,4 +1,5 @@
-import 'package:app/screens/LoginScreen.dart';
+import 'package:app/components/common/routes.dart';
+import 'package:app/screens/MainSplashScreen.dart';
 import 'package:flutter/cupertino.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: CupertinoThemeData(
         primaryColor: CupertinoColors.activeBlue,
       ),
-      home: LoginScreen(),
+      home: MainSplashScreen(),
+      routes: Routes.routes,
     );
   }
 }
